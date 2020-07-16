@@ -1,6 +1,6 @@
-defmodule EctoSeed do
+defmodule SeedMigration do
   @moduledoc """
-  Documentation for `EctoSeed`.
+  Documentation for `SeedMigration`.
   """
 
   @doc """
@@ -8,7 +8,7 @@ defmodule EctoSeed do
 
   ## Examples
 
-      iex> EctoSeed.hello()
+      iex> SeedMigration.hello()
       :world
 
   """

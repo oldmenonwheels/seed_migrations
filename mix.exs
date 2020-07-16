@@ -1,10 +1,10 @@
-defmodule EctoSeed.MixProject do
+defmodule SeedMigration.MixProject do
   use Mix.Project
   @version "0.0.1"
 
   def project do
     [
-      app: :ecto_seed,
+      app: :seed_migration,
       version: @version,
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,

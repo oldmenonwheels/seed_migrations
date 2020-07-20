@@ -1,5 +1,6 @@
 defmodule SeedMigration.MixProject do
   use Mix.Project
+
   @version "0.0.1"
 
   def project do
@@ -22,8 +23,46 @@ defmodule SeedMigration.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
+      ecto_dep(),
+      {:telemetry, "~> 0.4.0"},
+
+      # Drivers
+      {:db_connection, "~> 2.2"},
+      postgrex_dep(),
+      myxql_dep(),
+      tds_dep()
     ]
+  end
+
+  defp ecto_dep do
+    if path = System.get_env("ECTO_PATH") do
+      {:ecto, path: path}
+    else
+      {:ecto, "~> 3.4.3"}
+    end
+  end
+
+  defp postgrex_dep do
+    if path = System.get_env("POSTGREX_PATH") do
+      {:postgrex, path: path}
+    else
+      {:postgrex, "~> 0.15.0", optional: true}
+    end
+  end
+
+  defp myxql_dep do
+    if path = System.get_env("MYXQL_PATH") do
+      {:myxql, path: path}
+    else
+      {:myxql, "~> 0.3.0 or ~> 0.4.0", optional: true}
+    end
+  end
+
+  defp tds_dep do
+    if path = System.get_env("TDS_PATH") do
+      {:tds, path: path}
+    else
+      {:tds, "~> 2.1.0", optional: true}
+    end
   end
 end
